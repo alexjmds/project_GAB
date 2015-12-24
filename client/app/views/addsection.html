@@ -1,0 +1,126 @@
+<div class="addcontent">
+			
+				
+				<div ng-show="addHomeSectionShow" class="grid">
+					<figure ng-click="addSectionOption('b')" class="effect-sadie">
+						<img src="images/2.jpg" alt="Add Beer"/>
+						<figcaption>
+							<h2>Add <span>Beer</span></h2>
+							<p>You can add new Beer to our DataBase <br>[GotABeer]</p>
+						</figcaption>			
+					</figure>
+					<figure ng-click="addSectionOption('s')" class="effect-sadie">
+						<img src="images/14.jpg" alt="Add Shop"/>
+						<figcaption>
+							<h2>Add <span>Shop</span></h2>
+							<p>You can add new Shop to existing Beer<br>[GotABeer]</p>
+						</figcaption>			
+					</figure>
+				</div>
+
+<div class="morphsearch-content" ng-show="addBeerSectionShow">
+          <div class="dummy-column toleft">
+            <h2>NEW BEER</h2>
+            <form name="addbeer">
+            <div class="dummy-media-object">
+              <label for="companyName">Company</label>
+              <label  for="companyName" class="add-alert" ng-show="addbeer.companyName.$invalid">* required</label>
+              <input name="companyName" type="text" ng-model="newbeers.companyName" placeholder="Add brewer company *" required>
+             </div>
+            
+            <div class="dummy-media-object">
+              <label for="name">Name of the Beer</label>
+              <label for="name" class="add-alert" ng-show="addbeer.name.$error.required">* required</label>
+              <input name="name" type="text" ng-model="newbeers.name" placeholder="add Beer Name *" required>
+            </div>
+            <div class="dummy-media-object">
+             <label for="color">Color</label>
+             <label for="color" class="add-alert" ng-show="addbeer.color.$invalid">* required</label>
+             <select name="color" ng-model="newbeers.color" ng-options="color for color in colorList" required></select>
+            </div>
+            <div class="dummy-media-object">
+              <label for="origin">Origin</label>
+              <label for="origin" class="add-alert" ng-show="addbeer.origin.$invalid">* required</label>
+              <select name="origin" ng-model="newbeers.origin" ng-options="country for country in countryList" required></select>
+            </div>
+            <div class="dummy-media-object">
+              <label for="style">Style</label>
+              <label for="style" class="add-alert" ng-show="addbeer.style.$invalid">* required</label>
+              <select name="style" ng-model="newbeers.style" ng-options="style for style in styleList" required></select>
+            </div>
+            <div class="dummy-media-object" ng-class="{'has-error':addbeer.abv.$error.pattern}" >
+              <label for="abv">ABV</label>
+              <label for="abv" class="add-alert" ng-show="addbeer.abv.$error.pattern">only is a number</label>
+              <label for="abv" class="add-alert" ng-show="addbeer.abv.$invalid">* required</label>
+              <input name="abv" type="text" ng-model="newbeers.abv" required
+                ng-pattern="/^\d+$/" placeholder="Add Beer ABV *">
+            </div>
+              <div class="dummy-media-object">
+              <label for="img">Brewery logo URL</label>
+              <label for="img" class="add-alert" ng-show="addbeer.img.$invalid">* required</label>
+              <input name="img" type="text" ng-model="newbeers.img" placeholder="Add Brewery logo URL *" required>
+            </div>
+            <div class="dummy-media-object">
+              <label for="description">Description</label>
+              <label for="description" class="add-alert" ng-show="addbeer.description.$invalid">* required</label>
+              <input name="description" type="text" ng-model="newbeers.description" placeholder="Add Beer Description *" required>
+            </div>
+            </form>
+              <div class="dummy-media-object">
+              <button class="save-button" ng-disabled="addbeer.$invalid" ng-click="saveBeer()">Save!</button>
+            </div>
+          </div>
+          <div class="beer-logo"> <img class="beer-logo-img" src="{{newbeers.img}}" alt="Beer logo"></div>
+         
+        </div>
+
+      <div class="morphsearch-content" ng-show="addShopSectionShow">
+      
+      <div id="mapforadd" class="mapforadd"></div>
+              <div class="dummy-column">
+                <h2>Add new shop to {{beers2.name}}</h2>
+                <div class="dummy-media-object">
+                <select ng-model="beers2" ng-options="beers.name for beers in beers" required>
+                </select>
+                <span ng-hide="beers2" class="add-alert">
+                   <strong>* required</strong>               
+                </span>
+                </div>
+                <div ng-show="beers2" class="dummy-media-object">
+                    <strong>{{beers2.companyName}}</strong> - {{beers2.color}} / {{beers2.style}} - Shops in DB:<strong>{{beers2.shops.length}}</strong>               
+                </div>
+                <form name="addshop">
+                <div class="dummy-media-object">
+                 <label for="shopName">Shop Name</label>
+                 <input name="shopName" type="text" ng-model="newshop.shopName" placeholder="Add Shop Name">    
+                </div>
+                <div class="dummy-media-object">
+                 <label for="address">Shop Address</label>
+                 <label for="address" class="add-alert" ng-show="addshop.address.$invalid">* required</label>
+                 <input name="address" type="text" id="address" ng-model="newshop.address" placeholder="Add Shop Address *" required>
+                </div>
+                <div class="dummy-media-object">
+                 <label for="lat">Address Latitude</label>
+                 <label for="lat" class="add-alert" ng-show="addshop.lat.$invalid">* required</label>
+                 <!-- <label for="lat" class="add-alert" ng-show="addshop.lat.$error.pattern">* only namber</label> -->
+                 <input name="lat" type="text" id="lat" ng-model="newshop.lat" placeholder="Add Lat *" required>
+                </div>
+                <div class="dummy-media-object">
+                 <label for="lng">Adress Langtitude</label>
+                 <label for="lang" class="add-alert" ng-show="addshop.lng.$invalid">* required</label>
+                 <input name="lng" type="text" id="lng" ng-model="newshop.lng" placeholder="Add Lng *" required>
+
+                </div>
+                </form>
+                <div class="dummy-media-object">
+                  <button class="save-button" ng-disabled="addshop.$invalid" ng-click="saveShop()">Save!</button>
+                </div>
+              </div>
+            </div>
+
+        <span class="morphsearch-close" ng-click="addClose()"></span>
+      </div>
+    </div>
+					
+					
+				</div>

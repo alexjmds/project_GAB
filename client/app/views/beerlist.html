@@ -1,0 +1,10 @@
+<li class="ng-scope" ng-class="{'new-label': {{beers.date | dataFilte}}}">
+    <div class="beer-link" ng-click="goToBeer()">
+        <span class="beer-name block ng-binding">{{beers.name}}</span>
+        <span class="beer-style-color block ng-binding">{{beers.style}}
+            <span class = "color">{{beers.color}}</span>
+        </span>
+        <span class="beer-shops-number block ng-binding">{{beers.shops.length}}</span>
+        <span class="block double-room" ng-style="{'background-image': 'url(/images/flags/4x3/{{beers.origin | toCountryFlag}}.svg)'}"></span>
+    </div>
+</li>

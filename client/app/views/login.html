@@ -1,0 +1,52 @@
+<div ng-show="loginPop && !isAuthenticated()" ng-class="{active:!register}" class="container">
+    <div class="card"></div>
+    <div class="card">
+        <h1 class="title">Auth</h1>
+        <form ng-submit="submit()" name="login" novalidate>
+            <div class="input-container">
+                <input name="email" ng-model="$parent.email" type="email" required autofocus="" required>
+                    <label for="email">Email</label>
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container">
+                    <input name="password" ng-model="$parent.password" type="password" required>
+                        <label for="assword">Password</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit">
+                            <span>LoGin</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card alt">
+                <div ng-click="register=!register" class="toggle"></div>
+                <h1 class="title">Register
+      
+                    <div ng-click="register=!register" class="close"></div>
+                </h1>
+                <form ng-submit="reg()" name="register" novalidate>
+                    <div class="input-container">
+                        <input name="email" ng-model="$parent.email" type="email" required="required"/>
+                        <label for="email">Email</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input name="password" ng-model="$parent.password" type="password" required="required"/>
+                        <label for="Password">Password</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input name="password_confirm" ng-model="$parent.password_confirm" type="password" required="required"/>
+                        <label for="Repeat Password">Repeat Password</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit">
+                            <span>Next</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>

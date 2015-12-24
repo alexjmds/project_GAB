@@ -1,0 +1,9 @@
+<div ng-class="{'ns-show ns-box ns-attached ns-effect-bouncyflip ns-type-notice': alert.show, 'ns-hide ns-box ns-attached ns-effect-bouncyflip ns-type-notice': !alert.show, 'alert-hidden':!alert.hasBeenShown}">
+    <div class="ns-box-inner">
+        <span class="{{alert.type}}"></span>
+        <span>
+            <strong>{{alert.title}}</strong> {{alert.message}}
+        </span>
+    </div>
+    <span class="ns-close" ng-click="notifIsClose = 1"></span>
+</div>
